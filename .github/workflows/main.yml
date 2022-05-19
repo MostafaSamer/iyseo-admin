@@ -21,4 +21,4 @@ jobs:
         username: ubuntu
         password: news-blogs
         port: 22
-        script: cd /var/www/iyseo-admin && git pull && npm i && ng build --configuration=production --aot --outputHashing=all
+        script: cd /var/www/iyseo-admin && git pull && sudo npm i && sudo ng build --configuration=production --aot --outputHashing=all
