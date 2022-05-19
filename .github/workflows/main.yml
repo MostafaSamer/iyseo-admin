@@ -1,0 +1,24 @@
+name: Clone repository
+
+on: 
+# Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  clone:
+    name: Clone
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setup SSH
+      uses: appleboy/ssh-action@master
+      with:
+        host: ec2-34-245-20-107.eu-west-1.compute.amazonaws.com
+        username: ubuntu
+        password: news-blogs
+        port: 22
+        script: cd /var/www/iyseo-admin && git pull && npm i && ng build --configuration=production --aot --outputHashing=all
