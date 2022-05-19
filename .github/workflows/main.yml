@@ -14,7 +14,7 @@ jobs:
     name: Clone
     runs-on: ubuntu-latest
     steps:
-    - name: Setup SSH
+    - name: Setup SSH 
       uses: appleboy/ssh-action@master
       with:
         host: ec2-34-245-20-107.eu-west-1.compute.amazonaws.com
