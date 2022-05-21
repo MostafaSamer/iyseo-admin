@@ -1,0 +1,78 @@
+.page-info h1 {
+    font-size: 28px;
+    color: var(--myBlack);
+    font-family: var(--Poppins);
+    font-weight: var(--Regular);
+}
+
+.page-info h3 {
+    font-size: 16px;
+    color: var(--myDate);
+    font-family: var(--Poppins);
+    font-weight: var(--Regular);
+}
+
+.page-info h6 {
+    font-size: 13px;
+    color: #171725;
+    font-family: var(--Poppins);
+    font-weight: var(--Regular);
+}
+
+.left-side {
+    justify-content: flex-end;
+}
+
+.left-side img {
+    cursor: pointer;
+}
+
+.user-image img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: solid 2px var(--myBlue);
+}
+
+.menu-toggle {
+    width: 90px;
+    transform: translateX(0%);
+    transition: all 1s;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    margin-right: 12px;
+    div {
+        width: 24px;
+        height: 1px;
+        background: var(--myBlack);
+        margin: 3px 0;
+    }
+}
+
+.dropdown-item {
+    cursor: pointer;
+}
+
+.menu-toggle-opened {
+    transform: translateX(100%)
+}
+
+.dropdown-menu {
+    transform: translate(-107px, 38px) !important;
+    border-radius: 12px;
+    border: 1px solid #E8E7E7;
+    box-shadow: 0px 1px 50px #00000014;
+    background-color: var(--myWhite);
+}
+
+.dropdown-menu a {
+    color: #4D4F5C;
+    font-size: 13px;
+    font-family: var(--Poppins);
+    font-weight: var(--Regular);
+}
+
+.dropdown-menu a:focus, .dropdown-menu a:active {
+    background-color: var(--myGray);
+}

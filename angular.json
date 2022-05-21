@@ -31,9 +31,28 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/styles/global.scss",
+              "src/assets/styles/css/bootstrap.min.css",
+              "src/assets/styles/css/materialdesignicons.min.css",
+              "src/assets/styles/css/tiny-slider.css",
+              "src/assets/styles/css/tobii.min.css",
+              "src/assets/styles/css/datepicker.min.css",
+              "src/assets/styles/css/simplebar.css",
+              "src/assets/styles/css/colors/default.css",
+              "./node_modules/aos/dist/aos.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/styles/js/app.js",
+              "src/assets/styles/js/bootstrap.bundle.min.js",
+              "src/assets/styles/js/plugins.init.js",
+              "src/assets/styles/js/switcher.js",
+              "src/assets/styles/js/tiny-slider.js",
+              "src/assets/styles/js/tobii.min.js",
+              "src/assets/styles/js/datepicker.min.js",
+              "src/assets/styles/js/simplebar.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -99,9 +118,28 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/styles/global.scss",
+              "src/assets/styles/css/bootstrap.min.css",
+              "src/assets/styles/css/materialdesignicons.min.css",
+              "src/assets/styles/css/tiny-slider.css",
+              "src/assets/styles/css/tobii.min.css",
+              "src/assets/styles/css/datepicker.min.css",
+              "src/assets/styles/css/simplebar.css",
+              "src/assets/styles/css/colors/default.css",
+              "./node_modules/aos/dist/aos.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/styles/js/app.js",
+              "src/assets/styles/js/bootstrap.bundle.min.js",
+              "src/assets/styles/js/plugins.init.js",
+              "src/assets/styles/js/switcher.js",
+              "src/assets/styles/js/tiny-slider.js",
+              "src/assets/styles/js/tobii.min.js",
+              "src/assets/styles/js/datepicker.min.js",
+              "src/assets/styles/js/simplebar.min.js"
+            ]
           }
         }
       }

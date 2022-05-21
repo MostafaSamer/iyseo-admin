@@ -1,0 +1,53 @@
+<div class="sliderbar">
+    <div class="logo py-5">
+        <img src="/assets/images/logo-text.png" alt="" style="width: 100%;">
+    </div>
+    <ul class="">
+        <li class="nav-item lvl1 my-4">
+            <ng-container>
+                <div class="nav-item-hold" routerLink="/posts" data-toggle="tooltip" data-placement="right"
+                    title="News">
+                    <div [ngClass]="{'active': CheckActive('/posts')}" class="nav-item-image-hold">
+                        News
+                    </div>
+                </div>
+            </ng-container>
+        </li>
+
+        
+        <li class="nav-item lvl1 my-4">
+            <ng-container>
+                <div class="nav-item-hold" routerLink="/category" data-toggle="tooltip" data-placement="right"
+                    title="Category">
+                    <div [ngClass]="{'active': CheckActive('/category')}" class="nav-item-image-hold">
+                        Category
+                    </div>
+                </div>
+            </ng-container>
+        </li>
+
+
+        <li class="nav-item lvl1 my-4">
+            <ng-container>
+                <div class="nav-item-hold" routerLink="/users" data-toggle="tooltip" data-placement="right"
+                    title="Users">
+                    <div [ngClass]="{'active': CheckActive('/users')}" class="nav-item-image-hold">
+                        Users
+                    </div>
+                </div>
+            </ng-container>
+        </li>
+
+
+        <li class="nav-item lvl1 my-4">
+            <ng-container>
+                <div class="nav-item-hold" routerLink="/activities" data-toggle="tooltip" data-placement="right"
+                    title="Activities">
+                    <div [ngClass]="{'active': CheckActive('/activities')}" class="nav-item-image-hold">
+                        Activities
+                    </div>
+                </div>
+            </ng-container>
+        </li>
+    </ul>
+</div>

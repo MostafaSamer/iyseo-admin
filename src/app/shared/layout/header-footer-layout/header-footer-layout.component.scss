@@ -1,0 +1,17 @@
+.admin-slider {
+    width: 150px;
+    transition: left 1s;
+}
+
+@media(max-width: 992px) {
+    .admin {
+        margin: 0px !important;
+    }
+    .admin-slider {
+        position: fixed;
+        z-index: 1;
+        padding: 0px;
+        width: 70px;
+        left: -100px;
+    }
+}
