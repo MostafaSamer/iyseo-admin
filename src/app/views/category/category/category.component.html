@@ -1,1 +1,193 @@
-<p>category works!</p>
+<div>
+    <div class="searchHolder mb-2">
+        <div class="searchBar">
+            <div class="addUserButton mb-3 mb-sm-0">
+                <button (click)="AddEditCategory(null, 'ADD')" data-toggle="modal"
+                    data-target="#exampleModalCenter_addEdit" class="">Add New Category
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="cardHolder">
+        <div class="myCard">
+            <div class="services-card px-3 py-4">
+                <div class="row m-0 table-holder">
+                    <div class="table">
+                        <table class="w-100">
+                            <tr class="table-header">
+                                <th class="my-th">
+                                    <div>Cover</div>
+                                </th>
+                                <th class="my-th">
+                                    <div>Name</div>
+                                </th>
+                                <th class="my-th">
+                                    <div>Permissions</div>
+                                </th>
+                                <th class="my-th">
+                                    <div>Update</div>
+                                </th>
+                            </tr>
+                            <tr *ngFor="let el of allCategories">
+                                <td class="my-td">
+                                    <div>
+                                        <img [src]="MakeURLSave(el?.cover?.fullPath)" width="100px" />
+                                    </div>
+                                </td>
+                                <td class="my-td">
+                                    <div>{{el?.name}}</div>
+                                </td>
+                                <td class="my-td">
+                                    <div>{{el?.description}}</div>
+                                </td>
+                                <td class="my-td">
+                                    <div class="p-0">
+                                        <div class="action-button action-button-active mx-2 p-0">
+                                            <button (click)="AddEditCategory(el, 'EDIT')" data-toggle="modal"
+                                                data-target="#exampleModalCenter_addEdit">Update</button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Not Found -->
+                            <tr *ngIf="allCategories.length == 0 && !loading">
+                                <td class="my-td" colspan="100%">
+                                    <div class="table-not-found p-4">
+                                        <img src="/assets/icons/sorry.svg" />
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add/Edit Modal -->
+<div class="modal fade" id="exampleModalCenter_addEdit" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle_addEdit" aria-hidden="true" #closeModal>
+    <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 928px;">
+        <div class="modal-content myModal">
+            <div class="modal-header">
+                <h4 class="m-0">{{Mode == "ADD"? 'Add New Category' : 'Edit Category'}}</h4>
+                <button type="button" (click)="CancelForm()" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="modalBody px-5 p-5">
+                    <div class="cardHolder">
+                        <div class="messages mb-5" *ngIf="ShowSuccess || ShowError">
+                            <div class="success-mess py-3" *ngIf="ShowSuccess">
+                                <P class="text-center m-0">
+                                    Category Added Successfully
+                                </P>
+                            </div>
+                            <div class="error-mess py-3" *ngIf="ShowError">
+                                <P class="text-center m-0">
+                                    Something went wrong, please try again later
+                                </P>
+                            </div>
+                        </div>
+                        <div class="accountCard">
+                            <form *ngIf="addEditForm" [formGroup]="addEditForm" (ngSubmit)="submitAddEdit()">
+                                <div class="row">
+                                    <!-- Start of Category Image -->
+                                    <div class="col-12 mb-5">
+                                        <div class="row">
+                                            <div class="col-6" *ngIf="addEditForm.controls['image'].value.fullPath">
+                                                <img [src]="MakeURLSave(addEditForm.controls['image'].value.fullPath)" width="100px" />
+                                            </div>
+                                            <div class="col-6 d-flex align-items-center">
+                                                <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"
+                                                    (change)="UploadFile($event)" />
+                                                <label for="imageUpload"></label>
+                                            </div>
+                                        </div>
+                                        <!-- Error -->
+                                        <div *ngIf="(addEditForm.controls['image'].touched || AnySubmit) && addEditForm.controls['image'].invalid"
+                                            class="text-danger font-weight-bold col-12 p-0">
+                                            <div *ngIf="addEditForm.controls['image'].errors?.['required']">
+                                                Category Cover is Required
+                                            </div>
+                                        </div>
+                                        <!-- Error -->
+                                    </div>
+                                    <!-- End of Category Image -->
+
+
+                                    <!-- Start of Category Name -->
+                                    <div class="col-12 mb-5">
+                                        <div>
+                                            <label>Category Name</label>
+                                            <input id="name" class="form-control px-3 py-2" type="text"
+                                                formControlName="name" [attr.disabled]="Mode == 'VIEW'? '' : null">
+                                        </div>
+                                        <!-- Error -->
+                                        <div *ngIf="(addEditForm.controls['name'].touched || AnySubmit) && addEditForm.controls['name'].invalid"
+                                            class="text-danger font-weight-bold col-12 p-0">
+                                            <div *ngIf="addEditForm.controls['name'].errors?.['required']">
+                                                Category Name is Required
+                                            </div>
+                                            <div *ngIf="addEditForm.controls['name'].errors?.['minlength']">
+                                                Category Name must be more than 3 Characters
+                                            </div>
+                                            <div *ngIf="addEditForm.controls['name'].errors?.['maxlength']">
+                                                Category Name must be less than 30 Characters
+                                            </div>
+                                        </div>
+                                        <!-- Error -->
+                                    </div>
+                                    <!-- End of Category Name -->
+
+
+                                    <!-- Start of Category Description -->
+                                    <div class="col-12 mb-5">
+                                        <div>
+                                            <label>Category Description</label>
+                                            <input id="description" class="form-control px-3 py-2" type="text"
+                                                formControlName="description"
+                                                [attr.disabled]="Mode == 'VIEW'? '' : null">
+                                        </div>
+                                        <!-- Error -->
+                                        <div *ngIf="(addEditForm.controls['description'].touched || AnySubmit) && addEditForm.controls['description'].invalid"
+                                            class="text-danger font-weight-bold col-12 p-0">
+                                            <div *ngIf="addEditForm.controls['description'].errors?.['required']">
+                                                Category Description is Required
+                                            </div>
+                                            <div *ngIf="addEditForm.controls['description'].errors?.['minlength']">
+                                                Category Description must be more than 3 Characters
+                                            </div>
+                                            <div *ngIf="addEditForm.controls['description'].errors?.['maxlength']">
+                                                Category Description must be less than 300 Characters
+                                            </div>
+                                        </div>
+                                        <!-- Error -->
+                                    </div>
+                                    <!-- End of Category Description -->
+
+                                    <div class="col-12 mb-3">
+                                        <div class="buttons-holder d-flex justify-content-center">
+                                            <div *ngIf="Mode != 'VIEW'" class="send-button px-2">
+                                                <button class="btn" type="submit">Submit</button>
+                                            </div>
+                                            <div class="cancel-button px-2">
+                                                <button class="btn" type="button" *ngIf="Mode =='EDIT'"
+                                                    (click)="SetDataForm()">Discard</button>
+                                                <button class="btn" type="button" *ngIf="Mode =='ADD'"
+                                                    (click)="CancelForm()">Discard</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

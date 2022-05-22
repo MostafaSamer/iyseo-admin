@@ -26,4 +26,8 @@ export class DataService {
     return this.http.patch(environment.baseUrl + url, headers, data)
   }
 
+  public Put(url: string, headers: any, data: any) {
+    return this.http.put(environment.baseUrl + url, headers, data)
+  }
+
 }

@@ -4,7 +4,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { HeaderFooterLayoutComponent } from './shared/layout/header-footer-layout/header-footer-layout.component';
 
 const routes: Routes = [
-  
+  {
+    path: '',
+    redirectTo: '/posts',
+    pathMatch: 'full'
+  },
   {
     path: 'posts',
     component: HeaderFooterLayoutComponent,
@@ -24,6 +28,10 @@ const routes: Routes = [
     path: 'activities',
     component: HeaderFooterLayoutComponent,
     loadChildren: () => import('./views/activities/activities.module').then(c => c.ActivitiesModule)
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./views/auth/auth.module').then(c => c.AuthModule)
   }
 ];
 

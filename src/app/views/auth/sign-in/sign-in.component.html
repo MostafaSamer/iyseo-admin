@@ -1,0 +1,52 @@
+<!-- Hero Start -->
+<section class="bg-home bg-circle-gradiant d-flex align-items-center">
+    <div class="bg-overlay bg-overlay-white"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="form-signin p-4 bg-white rounded shadow">
+                    <form *ngIf="addEditForm" [formGroup]="addEditForm" (ngSubmit)="submitAddEdit()">
+                        <a href="index.html"><img src="assets/images/logo-text.png" class="avatar avatar-small mb-4 d-block mx-auto" alt=""></a>
+                        <h5 class="mb-3 text-center">Login</h5>
+
+                        <div class="form-floating mb-2">
+                            <input type="text" class="form-control" id="floatingEmail" placeholder="name@example.com" required formControlName="email">
+                            <label for="floatingEmail">Email</label>
+                        </div>
+
+                        <!-- Error -->
+                        <div *ngIf="(addEditForm.controls['email'].touched || AnySubmit) && addEditForm.controls['email'].invalid"
+                            class="text-danger font-weight-bold col-12 p-0">
+                            <div *ngIf="addEditForm.controls['email'].errors?.['required']">
+                                Email is Required
+                            </div>
+                        </div>
+                        <!-- Error -->
+
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" required formControlName="password">
+                            <label for="floatingPassword">Password</label>
+                        </div>
+
+                        <!-- Error -->
+                        <div *ngIf="(addEditForm.controls['password'].touched || AnySubmit) && addEditForm.controls['password'].invalid"
+                            class="text-danger font-weight-bold col-12 p-0">
+                            <div *ngIf="addEditForm.controls['password'].errors?.['required']">
+                                Password is Required
+                            </div>
+                            <div *ngIf="addEditForm.controls['password'].errors?.['password']">
+                                Password is Not Valid
+                            </div>
+                        </div>
+                        <!-- Error -->
+        
+                        <button class="btn btn-primary w-100" type="submit">Login</button>
+
+                        <p class="mb-0 text-muted mt-3 text-center">© <script>document.write(new Date().getFullYear())</script> IYSEO.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> <!--end container-->
+</section><!--end section-->
+<!-- Hero End -->
