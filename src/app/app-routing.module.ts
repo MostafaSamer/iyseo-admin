@@ -6,7 +6,7 @@ import { HeaderFooterLayoutComponent } from './shared/layout/header-footer-layou
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/posts',
+    redirectTo: '/auth/sign-in',
     pathMatch: 'full'
   },
   {
