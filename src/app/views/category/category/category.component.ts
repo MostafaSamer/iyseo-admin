@@ -80,8 +80,7 @@ export class CategoryComponent implements OnInit {
     const _file = event.target.files[0];
     const formData = new FormData();
     formData.append("file", _file);
-    const configs = { headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.sharedUserData.token) };
-    this._dataSerevice['Post']("api/upload?type=image", formData, configs)
+    const configs = { headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.sharedUserData.token) };    this._dataSerevice['Post']("api/upload?type=image", formData, configs)
     .subscribe((res: any) => {
       console.log(res);
       (this.addEditForm.get('image') as FormControl).setValue(res.data);
