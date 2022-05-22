@@ -5,6 +5,7 @@ import { UserCredentials } from 'src/app/shared/services/auth.service';
 import { DataService } from 'src/app/shared/services/data.service'
 import { DomSanitizer } from '@angular/platform-browser';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { ChangeEvent } from '@ckeditor/ckeditor5-angular/ckeditor.component';
 
 @Component({
   selector: 'app-posts',
@@ -32,7 +33,6 @@ export class PostsComponent implements OnInit {
   public ShowError: boolean = false;
 
   public Editor = ClassicEditor;
-  
   
 
   constructor(
@@ -84,6 +84,9 @@ export class PostsComponent implements OnInit {
       return;
     }
     this.SelectedPosts = cate;
+    this.setContentFormData(cate.content);
+    let myContainer = <HTMLElement> document.querySelector(".ck-content");
+    myContainer.innerHTML = cate.content;
     this.SetDataForm()
   }
 
@@ -104,7 +107,6 @@ export class PostsComponent implements OnInit {
     const configs = { headers: new HttpHeaders().set('Authorization', 'Bearer ' + this.sharedUserData.token) };
     this._dataSerevice['Post']("api/upload?type=image", formData, configs)
     .subscribe((res: any) => {
-      console.log(res);
       (this.addEditForm.get('cover') as FormControl).setValue(res.data);
     });
   }
@@ -119,7 +121,7 @@ export class PostsComponent implements OnInit {
       const url = this.Mode == 'ADD'? 'api/post' : `api/post/${this.SelectedPosts._id}`
       var data: any = {
         'title': formData.title,
-        'cover': formData.cover,
+        'cover': formData.cover._id,
         'content': formData.content,
         'isFeatured': formData.isFeatured,
         'inSlider': formData.inSlider,
@@ -151,6 +153,15 @@ export class PostsComponent implements OnInit {
         }
       )
     }
+  }
+
+  onContentChange({ editor }: ChangeEvent) {
+    const data = editor.getData();
+    this.setContentFormData(data);
+  }
+  
+  setContentFormData(data: string) {
+    (this.addEditForm.get('content') as FormControl).setValue(data);
   }
 
   MakeURLSave(url: string) {

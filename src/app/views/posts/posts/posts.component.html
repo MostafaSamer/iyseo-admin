@@ -161,7 +161,7 @@
                                         <div class="d-flex col-6">
                                             <input type="checkbox" id="per" name="per"
                                                 [checked]="addEditForm.controls['isFeatured'].value" class="mt-1 mx-2"
-                                                value="false">
+                                                value="false" formControlName="isFeatured">
                                             <label for="per" class="m-0">Is This Post a Featured?</label>
                                         </div>
                                     </div>
@@ -172,7 +172,7 @@
                                         <div class="d-flex col-6">
                                             <input type="checkbox" id="per" name="per"
                                                 [checked]="addEditForm.controls['inSlider'].value" class="mt-1 mx-2"
-                                                value="false">
+                                                value="false" formControlName="inSlider">
                                             <label for="per" class="m-0">Is This Post will be in a Slider?</label>
                                         </div>
                                     </div>
@@ -192,7 +192,7 @@
                                     <!-- Start of Post Content -->
                                     <div class="col-12 mb-5">
                                         <div>
-                                            <ckeditor [editor]="Editor" data="<p>Hello, world!</p>"></ckeditor>
+                                            <ckeditor [editor]="Editor"  (change)="onContentChange($event)"></ckeditor>
                                         </div>
                                     </div>
                                     <!-- End of Post Content -->
