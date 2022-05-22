@@ -1,0 +1,65 @@
+.searchBar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.searchBar button {
+    background-color: #0096EE;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 10px;
+    border: none;
+    padding: 10px;
+}
+
+.invoive-number {
+    cursor: pointer;
+}
+
+.invoive-number:hover {
+    text-decoration: underline;
+}
+
+.action-button button {
+    background-color: #0096EE;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 10px;
+    border: none;
+    padding: 10px;
+}
+
+.action-button-delete button {
+    background-color: red;
+}
+
+.action-button-outline button {
+    background-color: #fff;
+    color: #0096EE;
+    border: 1px solid #0096EE;
+}
+
+.cancel-button-outline {
+    background-color: #fff;
+    color: #0096EE;
+    border: 1px solid #0096EE;
+}
+
+.view-click {
+    cursor: pointer;
+}
+
+.view-click:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .searchBar {
+        display: flex;
+        flex-direction: column;
+    }
+    .addUserButton {
+        display: flex;
+        justify-content: flex-end;
+    }
+}

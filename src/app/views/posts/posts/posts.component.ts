@@ -69,6 +69,7 @@ export class PostsComponent implements OnInit {
     this._dataSerevice.GetAll('api/category', {})
     .subscribe((res: any) => {
       this.allCategories = res.data;
+      (this.addEditForm.get('category') as FormControl).setValue(res.data[0]._id)
     })
   }
 
@@ -89,7 +90,7 @@ export class PostsComponent implements OnInit {
     (this.addEditForm.get('content') as FormControl).setValue(this.SelectedPosts.content);
     (this.addEditForm.get('isFeatured') as FormControl).setValue(this.SelectedPosts.isFeatured);
     (this.addEditForm.get('inSlider') as FormControl).setValue(this.SelectedPosts.inSlider);
-    (this.addEditForm.get('category') as FormControl).setValue(this.SelectedPosts.category);
+    (this.addEditForm.get('category') as FormControl).setValue(this.SelectedPosts.category._id);
   }
 
   UploadFile(event: any) {

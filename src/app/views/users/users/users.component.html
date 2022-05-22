@@ -1,1 +1,54 @@
-<p>users works!</p>
+<div>
+    <div class="searchHolder mb-2">
+        <div class="searchBar">
+            <div class="addUserButton mb-3 mb-sm-0">
+                <button (click)="AddEditCategory(null, 'ADD')" data-toggle="modal"
+                    data-target="#exampleModalCenter_addEdit" class="">Add New User
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="cardHolder">
+        <div class="myCard">
+            <div class="services-card px-3 py-4">
+                <div class="row m-0 table-holder">
+                    <div class="table">
+                        <table class="w-100">
+                            <tr class="table-header">
+                                <th class="my-th">
+                                    <div>Full Name</div>
+                                </th>
+                                <th class="my-th">
+                                    <div>Email</div>
+                                </th>
+                                <th class="my-th">
+                                    <div>Phone Number</div>
+                                </th>
+                            </tr>
+                            <tr *ngFor="let el of allUsers">
+                                <td class="my-td">
+                                    <div>{{el?.fullName}}</div>
+                                </td>
+                                <td class="my-td">
+                                    <div>{{el?.email}}</div>
+                                </td>
+                                <td class="my-td">
+                                    <div>{{el?.phoneNumber}}</div>
+                                </td>
+                            </tr>
+
+                            <!-- Not Found -->
+                            <tr *ngIf="allUsers.length == 0 && !loading">
+                                <td class="my-td" colspan="100%">
+                                    <div class="table-not-found p-4">
+                                        <img src="/assets/icons/sorry.svg" />
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
