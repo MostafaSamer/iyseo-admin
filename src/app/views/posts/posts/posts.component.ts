@@ -4,6 +4,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { UserCredentials } from 'src/app/shared/services/auth.service';
 import { DataService } from 'src/app/shared/services/data.service'
 import { DomSanitizer } from '@angular/platform-browser';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   selector: 'app-posts',
@@ -29,6 +30,8 @@ export class PostsComponent implements OnInit {
   public AnySubmit: Boolean = false;
   public ShowSuccess: boolean = false;
   public ShowError: boolean = false;
+
+  public Editor = ClassicEditor;
   
   
 

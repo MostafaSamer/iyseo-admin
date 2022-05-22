@@ -18,6 +18,8 @@
     "@angular/platform-browser": "~13.0.0",
     "@angular/platform-browser-dynamic": "~13.0.0",
     "@angular/router": "~13.0.0",
+    "@ckeditor/ckeditor5-angular": "^4.0.0",
+    "@ckeditor/ckeditor5-build-classic": "^34.0.0",
     "@types/aos": "^3.0.4",
     "@types/feather-icons": "^4.7.0",
     "aos": "^2.3.4",
